@@ -1,0 +1,43 @@
+#! /bin/sh
+EmbedMAS_HOME=/opt/chonos-embMAS
+EmbedMAS_TMP=/tmp/.embedMAS
+EmbedMAS_LOGFILE=$EmbedMAS_TMP/embeddedMAS.log
+mkdir -p $EmbedMAS_TMP
+timestamp=`date`
+
+while getopts l:-: flag 
+    do
+    case "${flag}" in
+        l) log=${OPTARG};;  
+        -) opt=${OPTARG};;
+    esac
+done
+
+if [ "$log" = "term" ]; then
+    tail -f $EmbedMAS_TMP/embeddedMAS.log
+    exit 0
+elif [ "$log" = "clear" ]; then
+    echo "EmbeddedMAS Log" > $EmbedMAS_TMP/embeddedMAS.log
+    echo "Cleaning EmbeddedMAS Log"
+    exit 0
+fi
+
+if [ "$opt" = "help" ]; then
+	man chonos-log
+    exit 0
+elif [ "$opt" = "start" ]; then
+	echo "[chonos-log] Starting ChonOS Web Log Monitor Service $timestamp" > $EmbedMAS_LOGFILE
+    pid=$$
+    echo $pid > $EmbedMAS_TMP/chonos-log.pid
+    echo "[$pid] Starting ChonOS Log"
+    /usr/bin/tail -f $EmbedMAS_LOGFILE | /usr/local/bin/wtee -b *:3271
+    exit 0
+elif [ "$opt" = "stop" ]; then
+    pid=`cat $EmbedMAS_TMP/chonos-log.pid`
+    echo "[$pid] Stoping ChonOS Log"
+    kill $pid
+    pkill wtee
+    exit 0
+fi
+
+/usr/bin/chonos-log --help

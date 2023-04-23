@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "ChonOS Web Log Monitor Service downloading the Wtee. A network connection is needed!"
+pip3 install httputil
+pip3 install wtee
