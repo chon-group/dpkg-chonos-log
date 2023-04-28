@@ -1,7 +1,7 @@
 # chonos-log - ChonOS Web Log Monitor
 
 ## DESCRIPTION
-A service to accessing the LOG of Embedded MAS via a webpage.
+A service for accessing the LOG of Embedded MAS.
 
 List of options and arguments:
 
