@@ -5,13 +5,20 @@ EmbedMAS_LOGFILE=$EmbedMAS_TMP/embeddedMAS.log
 mkdir -p $EmbedMAS_TMP
 timestamp=`date`
 
-while getopts l:-: flag 
+while getopts e:l:-: flag 
     do
     case "${flag}" in
+        e) event=${OPTARG};;
         l) log=${OPTARG};;  
         -) opt=${OPTARG};;
     esac
 done
+
+if [ "$event" != "" ]
+then
+    echo $event >> $EmbedMAS_LOGFILE
+    exit 0
+fi
 
 if [ "$log" = "term" ]; then
     tail -f $EmbedMAS_TMP/embeddedMAS.log
