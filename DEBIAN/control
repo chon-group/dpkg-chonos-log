@@ -1,10 +1,10 @@
 Package: chonos-log
-Version: 1.2.5
+Version: 1.2.6
 Priority:
 Architecture: all
 Essential:
 Depends: 
-Pre-depends: python3.9 | python3.10 | python3.11, python3-pip
+Pre-depends: python3 | python3.9 | python3.10 | python3.11, python3-pip
 Suggests:
 Installed-Size:
 Maintainer: chon@grupo.cefet-rj.br
