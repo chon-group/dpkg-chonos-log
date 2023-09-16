@@ -8,6 +8,7 @@ if $HttpUtilWithPEP668
 then
     echo "HttpUtil installed using PEP668"
 elif $HTTPUtil
+then
     echo "HttpUntil installed without PEP668"
 else
     echo "ERROR in HttpUtil Python packages installation"
@@ -20,6 +21,7 @@ if $WteeWithPEP668
 then
     echo "Wtee installed using PEP668"
 elif $Wtee
+then
     echo "Wtee installed without PEP668"
 else
     echo "ERROR in Wtee Python package installation"
