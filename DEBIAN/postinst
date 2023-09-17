@@ -6,3 +6,39 @@ cat /tmp/rc.local > /etc/rc.local
 gzip -f /usr/local/man/man1/chonos-log.1
 mandb
 
+
+echo "ChonOS Web Log Monitor Service use Wtee and HttpUtil Python packages. An internet connection is needed!"
+
+PIPVersion=$(pip3 --version | grep -oP '(?<=\().*(?=\))' | cut -d " " -f 2)
+if [ $PIPVersion = "3.10" ]
+then
+    echo "Forcing PIP3 Update to version 3.11"
+    curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
+fi
+
+HttpUtilWithPEP668="pip3 install httputil --break-system-packages"
+HttpUtil="pip3 install httputil"
+
+if $HttpUtilWithPEP668
+then
+    echo "HttpUtil installed using PEP668"
+elif $HTTPUtil
+then
+    echo "HttpUntil installed without PEP668"
+else
+    echo "ERROR in HttpUtil Python packages installation"
+fi
+
+WteeWithPEP668="pip3 install wtee --break-system-packages"
+Wtee="pip3 install wtee"
+
+if $WteeWithPEP668
+then
+    echo "Wtee installed using PEP668"
+elif $Wtee
+then
+    echo "Wtee installed without PEP668"
+else
+    echo "ERROR in Wtee Python package installation"
+fi
+
