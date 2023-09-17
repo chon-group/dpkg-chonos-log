@@ -1,6 +1,13 @@
 #!/bin/bash
 echo "ChonOS Web Log Monitor Service use Wtee and HttpUtil Python packages. An internet connection is needed!"
 
+PIPVersion=$(pip3 --version | grep -oP '(?<=\().*(?=\))' | cut -d " " -f 2)
+if [ $PIPVersion = "3.10" ]
+then
+    echo "Forcing PIP3 Update to version 3.11"
+    curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
+fi
+
 HttpUtilWithPEP668="pip3 install httputil --break-system-packages"
 HttpUtil="pip3 install httputil"
 
