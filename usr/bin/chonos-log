@@ -5,6 +5,14 @@ EmbedMAS_LOGFILE=$EmbedMAS_TMP/embeddedMAS.log
 mkdir -p $EmbedMAS_TMP
 timestamp=`date`
 
+if [ -e "/root/.local/bin/wtee" ]
+then
+    WTEE="/root/.local/bin/wtee"
+else
+    WTEE="/usr/local/bin/wtee"
+fi
+
+
 while getopts e:l:-: flag 
     do
     case "${flag}" in
@@ -37,7 +45,7 @@ elif [ "$opt" = "start" ]; then
     pid=$$
     echo $pid > $EmbedMAS_TMP/chonos-log.pid
     echo "[$pid] Starting ChonOS Log"
-    /usr/bin/tail -f $EmbedMAS_LOGFILE | /usr/local/bin/wtee -b *:3271
+    /usr/bin/tail -f $EmbedMAS_LOGFILE | $WTEE -b *:3271
     exit 0
 elif [ "$opt" = "stop" ]; then
     pid=`cat $EmbedMAS_TMP/chonos-log.pid`
