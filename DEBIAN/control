@@ -1,10 +1,10 @@
 Package: chonos-log
-Version: 1.5
+Version: 1.5.1
 Priority:
 Architecture: all
 Essential:
 Depends: 
-Pre-depends: stunnel4, curl, python3.9-full | python3.11-full, python3.9-dev | python3.11-dev, python3-dev, python3-pip
+Pre-depends: stunnel4, chonos-cert (>=24.03.17), curl, python3.9-full | python3.11-full, python3.9-dev | python3.11-dev, python3-dev, python3-pip
 Suggests:
 Installed-Size:
 Maintainer: chon@grupo.cefet-rj.br
