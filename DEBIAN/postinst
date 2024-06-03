@@ -1,7 +1,7 @@
 #!/bin/bash
-cat /etc/rc.local | grep -v "exit 0" | grep -v "chonos-log" > /tmp/rc.local
-echo "exit 0" >> /tmp/rc.local
-cat /tmp/rc.local > /etc/rc.local
+#cat /etc/rc.local | grep -v "exit 0" | grep -v "chonos-log" > /tmp/rc.local
+#echo "exit 0" >> /tmp/rc.local
+#cat /tmp/rc.local > /etc/rc.local
 
 gzip -f /usr/local/man/man1/chonos-log.1
 mandb
