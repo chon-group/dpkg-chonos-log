@@ -2,11 +2,20 @@
 
 |![chonos-log](https://github.com/chon-group/dpkg-chonos-log/assets/32855001/68527e51-b224-4958-8507-f543b07db560)|
 |:--:|
-|ChonOS-Log provides a multi-agent system remote monitoring using a web interface. So, the designer can track the agents' output messages and behavior by accessing the agent's mind.|
+|ChonOS-Log provides a multi-agent system remote monitoring using a web interface where the designer can track the agents' output messages and behavior.|
 
+## How to Install?
+1) In a terminal run the commands below:
+
+```console
+echo "deb [trusted=yes] http://packages.chon.group/ chonos main" | sudo tee /etc/apt/sources.list.d/chonos.list
+sudo apt update
+sudo apt install chonos-log
+```
 
 ## COPYRIGHT
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />The Chonos-Log is part of the ChonOS and is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The licensor cannot revoke these freedoms as long as you follow the license terms:
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />The Chonos-Log is part of the [_Cognitive Hardware on Networks Operating
+System (chonOS)_](http://os.chon.group/) and is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The licensor cannot revoke these freedoms as long as you follow the license terms:
 
 * __Attribution__ — You must give __appropriate credit__ like below:
 
