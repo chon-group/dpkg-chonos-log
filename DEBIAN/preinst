@@ -31,6 +31,19 @@ else
     echo "ERROR in HttpUtil Python packages installation"
 fi
 
+BackportsWithPEP668="$PYTHON -m pip install backports.ssl_match_hostname --break-system-packages"
+Backports="$PYTHON -m pip install backports.ssl_match_hostname --user pipenv"
+
+if $BackportsWithPEP668
+then
+    echo "Backports installed using PEP668"
+elif $Backports
+then
+    echo "Backports installed without PEP668"
+else
+    echo "ERROR in Backports Python package installation"
+fi
+
 WteeWithPEP668="$PYTHON -m pip install wtee --break-system-packages"
 Wtee="$PYTHON -m pip install wtee --user pipenv"
 
