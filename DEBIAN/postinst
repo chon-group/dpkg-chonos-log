@@ -6,5 +6,8 @@
 gzip -f /usr/local/man/man1/chonos-log.1
 mandb
 
+systemctl daemon-reload
+systemctl enable chonos-log.service
+systemctl start  chonos-log.service
 systemctl enable stunnel4
 systemctl start stunnel4
