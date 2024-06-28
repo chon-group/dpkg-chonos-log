@@ -1,5 +1,5 @@
 #! /bin/sh
-EmbedMAS_HOME=/opt/chonos-embMAS
+#EmbedMAS_HOME=/opt/chonos-embMAS
 EmbedMAS_TMP=/tmp/.embedMAS
 EmbedMAS_LOGFILE=$EmbedMAS_TMP/embeddedMAS.log
 mkdir -p $EmbedMAS_TMP
