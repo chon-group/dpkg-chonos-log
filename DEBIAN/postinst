@@ -1,13 +1,12 @@
 #!/bin/bash
-#cat /etc/rc.local | grep -v "exit 0" | grep -v "chonos-log" > /tmp/rc.local
-#echo "exit 0" >> /tmp/rc.local
-#cat /tmp/rc.local > /etc/rc.local
-
 gzip -f /usr/local/man/man1/chonos-log.1
 mandb
 
 systemctl daemon-reload
 systemctl enable chonos-log.service
-systemctl start  chonos-log.service
 systemctl enable stunnel4
-systemctl start stunnel4
+
+if [ -d /run/systemd/system ]; then
+    systemctl start  chonos-log.service
+    systemctl start stunnel4
+fi

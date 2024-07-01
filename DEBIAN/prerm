@@ -1,4 +1,6 @@
 #!/bin/bash
+if [ -d /run/systemd/system ]; then
+    systemctl stop  chonos-log.service
+fi
 systemctl disable chonos-log.service
-systemctl stop  chonos-log.service
 systemctl daemon-reload
