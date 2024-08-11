@@ -38,7 +38,7 @@ elif [ "$log" = "clear" ]; then
 fi
 
 if [ "$opt" = "help" ]; then
-	man chonos-log
+	echo "Consult tutorial at: https://github.com/chon-group/dpkg-chonos-log"
     exit 0
 elif [ "$opt" = "start" ]; then
 	echo "[chonos-log] Starting ChonOS Web Log Monitor Service $timestamp" > $EmbedMAS_LOGFILE
