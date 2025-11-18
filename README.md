@@ -1,6 +1,6 @@
 # ChonOS Web Log Monitor
 
-|![chonos-log](https://github.com/chon-group/dpkg-chonos-log/assets/32855001/68527e51-b224-4958-8507-f543b07db560)|
+|![chonos-log](https://github.com/user-attachments/assets/1f6d3ac7-45fd-4a34-9139-e3bf0a37ed34)|
 |:--:|
 |ChonOS-Log provides a multi-agent system remote monitoring using a web interface where the designer can track the agents' output messages and behavior.|
 
