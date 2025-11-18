@@ -1,5 +1,4 @@
 #! /bin/sh
-#EmbedMAS_HOME=/opt/chonos-embMAS
 EmbedMAS_TMP=/tmp/.embedMAS
 EmbedMAS_LOGFILE=$EmbedMAS_TMP/embeddedMAS.log
 mkdir -p $EmbedMAS_TMP
@@ -45,7 +44,7 @@ elif [ "$opt" = "start" ]; then
     pid=$$
     echo $pid > $EmbedMAS_TMP/chonos-log.pid
     echo "[$pid] Starting ChonOS Log"
-    /usr/bin/tail -f $EmbedMAS_LOGFILE | $WTEE -b *:3271
+    /usr/bin/tail -f $EmbedMAS_LOGFILE | $WTEE -b *:3274
     exit 0
 elif [ "$opt" = "stop" ]; then
     pid=`cat $EmbedMAS_TMP/chonos-log.pid`
