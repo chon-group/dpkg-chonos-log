@@ -19,8 +19,8 @@ else
     PYTHON="/usr/bin/python3"
 fi
 
-HttpUtilWithPEP668="$PYTHON -m pip install --find-links=/opt/group.chon/lib/python httputil --break-system-packages"
-HttpUtil="$PYTHON -m pip install --find-links=/opt/group.chon/lib/python httputil "
+HttpUtilWithPEP668="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python httputil --break-system-packages"
+HttpUtil="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python httputil "
 
 if $HttpUtilWithPEP668
 then
@@ -32,8 +32,8 @@ else
     echo "ERROR in HttpUtil Python packages installation"
 fi
 
-BackportsWithPEP668="$PYTHON -m pip install --find-links=/opt/group.chon/lib/python backports.ssl_match_hostname --break-system-packages"
-Backports="$PYTHON -m pip install --find-links=/opt/group.chon/lib/python backports.ssl_match_hostname --user pipenv"
+BackportsWithPEP668="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python backports.ssl_match_hostname --break-system-packages"
+Backports="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python backports.ssl_match_hostname --user pipenv"
 
 if $BackportsWithPEP668
 then
@@ -45,8 +45,8 @@ else
     echo "ERROR in Backports Python package installation"
 fi
 
-WteeWithPEP668="$PYTHON -m pip install wtee --break-system-packages --find-links=/opt/group.chon/lib/python"
-Wtee="$PYTHON -m pip install --find-links=/opt/group.chon/lib/python wtee --user pipenv"
+WteeWithPEP668="$PYTHON -m pip install wtee --no-index --break-system-packages --find-links=/opt/group.chon/lib/python"
+Wtee="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python wtee --user pipenv"
 
 if $WteeWithPEP668
 then
