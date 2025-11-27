@@ -1,10 +1,70 @@
 #!/bin/bash
+###############################################################################
+echo "ChonOS Web Log Monitor Service use Wtee and HttpUtil Python packages."
 
+PIPVersion=$(/usr/bin/pip3 --version | grep -oP '(?<=\().*(?=\))' | cut -d " " -f 2)
+if [ $PIPVersion = "3.10" ]
+then
+    echo "Forcing PIP3 Update to version 3.11"
+    curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
+fi
+
+if [ -e "/usr/bin/python3.11" ]
+then
+    PYTHON="/usr/bin/python3.11"
+elif [ -e "/usr/bin/python3.9" ]
+then
+    PYTHON="/usr/bin/python3.9"
+else
+    PYTHON="/usr/bin/python3"
+fi
+
+HttpUtilWithPEP668="$PYTHON -m pip install httputil --break-system-packages --find-links=/opt/group.chon/lib/python"
+HttpUtil="$PYTHON -m pip install httputil --find-links=/opt/group.chon/lib/python"
+
+if $HttpUtilWithPEP668
+then
+    echo "HttpUtil installed using PEP668"
+elif $HTTPUtil
+then
+    echo "HttpUntil installed without PEP668"
+else
+    echo "ERROR in HttpUtil Python packages installation"
+fi
+
+BackportsWithPEP668="$PYTHON -m pip install backports.ssl_match_hostname --break-system-packages --find-links=/opt/group.chon/lib/python"
+Backports="$PYTHON -m pip install backports.ssl_match_hostname --user pipenv --find-links=/opt/group.chon/lib/python"
+
+if $BackportsWithPEP668
+then
+    echo "Backports installed using PEP668"
+elif $Backports
+then
+    echo "Backports installed without PEP668"
+else
+    echo "ERROR in Backports Python package installation"
+fi
+
+WteeWithPEP668="$PYTHON -m pip install wtee --break-system-packages --find-links=/opt/group.chon/lib/python"
+Wtee="$PYTHON -m pip install wtee --user pipenv --find-links=/opt/group.chon/lib/python"
+
+if $WteeWithPEP668
+then
+    echo "Wtee installed using PEP668"
+elif $Wtee
+then
+    echo "Wtee installed without PEP668"
+else
+    echo "ERROR in Wtee Python package installation"
+fi
+
+
+##############################################################3
 systemctl daemon-reload
 systemctl enable chonos-log.service
 systemctl enable stunnel4
 
 if [ -d /run/systemd/system ]; then
-    systemctl start  chonos-log.service
+    systemctl start chonos-log.service
     systemctl start stunnel4
 fi
