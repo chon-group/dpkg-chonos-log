@@ -1,10 +1,10 @@
 Package: chonos-log
-Version: 25.11.27
+Version: 25.11.28
 Priority:
 Architecture: all
 Essential:
 Depends: 
-Pre-depends: stunnel4, chonos-cert (>=24.06.28), curl, python3.9-full | python3.11-full | python3.12-full | python3.13-full, python3.9-dev | python3.11-dev | python3.12-dev | python3.13-dev, python3-dev, python3-pip
+Pre-depends: stunnel4, chonos-cert (>=24.06.28), curl, python3.9-full | python3.11-full | python3.12-full | python3.13-full, python3.9-dev | python3.11-dev | python3.12-dev | python3.13-dev, python3-dev, python3-pip, python3-setuptools, python3-wheel
 Suggests:
 Installed-Size:
 Maintainer: Nilson Lazarin <chon@grupo.cefet-rj.br>

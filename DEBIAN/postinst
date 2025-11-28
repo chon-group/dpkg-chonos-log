@@ -1,5 +1,6 @@
 #!/bin/bash
 ###############################################################################
+OPTIONS="--no-index --no-build-isolation --find-links=/opt/group.chon/lib/python"
 echo "ChonOS Web Log Monitor Service use Wtee and HttpUtil Python packages."
 
 PIPVersion=$(/usr/bin/pip3 --version | grep -oP '(?<=\().*(?=\))' | cut -d " " -f 2)
@@ -19,8 +20,8 @@ else
     PYTHON="/usr/bin/python3"
 fi
 
-HttpUtilWithPEP668="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python httputil --break-system-packages"
-HttpUtil="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python httputil "
+HttpUtilWithPEP668="$PYTHON -m pip install $OPTIONS httputil --break-system-packages"
+HttpUtil="$PYTHON -m pip install $OPTIONS httputil "
 
 if $HttpUtilWithPEP668
 then
@@ -32,8 +33,8 @@ else
     echo "ERROR in HttpUtil Python packages installation"
 fi
 
-BackportsWithPEP668="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python backports.ssl_match_hostname --break-system-packages"
-Backports="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python backports.ssl_match_hostname --user pipenv"
+BackportsWithPEP668="$PYTHON -m pip install $OPTIONS backports.ssl_match_hostname --break-system-packages"
+Backports="$PYTHON -m pip install $OPTIONS backports.ssl_match_hostname --user pipenv"
 
 if $BackportsWithPEP668
 then
@@ -45,8 +46,8 @@ else
     echo "ERROR in Backports Python package installation"
 fi
 
-WteeWithPEP668="$PYTHON -m pip install wtee --no-index --break-system-packages --find-links=/opt/group.chon/lib/python"
-Wtee="$PYTHON -m pip install --no-index --find-links=/opt/group.chon/lib/python wtee --user pipenv"
+WteeWithPEP668="$PYTHON -m pip install $OPTIONS wtee --break-system-packages"
+Wtee="$PYTHON -m pip install $OPTIONS  wtee --user pipenv"
 
 if $WteeWithPEP668
 then
