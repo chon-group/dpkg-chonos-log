@@ -1,11 +1,11 @@
 Package: chonos-log
-Version: 25.11.28
+Version: 26.06.01
 Priority:
 Architecture: all
 Essential:
 Depends: 
-Pre-depends: stunnel4, chonos-cert (>=24.06.28), curl, python3, python3-pip, python3-setuptools, python3-wheel, build-essential, python3-requests, python3-urllib3, python3-idna, python3-certifi, python3-charset-normalizer
-Suggests:
+Pre-depends: stunnel4, chonos-cert (>=24.06.28), curl, python3, python3-pip, python3-setuptools, python3-wheel, build-essential, python3-requests, python3-urllib3, python3-idna, python3-certifi
+Suggests: python3-charset-normalizer
 Installed-Size: 4090
 Maintainer: Nilson Lazarin <chon@grupo.cefet-rj.br>
 Homepage: https://github.com/chon-group/dpkg-chonos-log
