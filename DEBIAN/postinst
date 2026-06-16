@@ -11,7 +11,7 @@ then
 elif [ "$PIPVersion" = "3.7" ]
 then
     echo "Using pip Install in Python 3.7"
-    /usr/bin/python3 -m pip install wtee
+    /usr/bin/python3 -m pip install --no-index --find-links=/opt/group.chon/lib/python/ wtee
 else
 
     if [ -e "/usr/bin/python3.11" ]
