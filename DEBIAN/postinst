@@ -8,57 +8,61 @@ if [ "$PIPVersion" = "3.10" ]
 then
     echo "Forcing PIP3 Update to version 3.11"
     curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
-fi
-
-if [ -e "/usr/bin/python3.11" ]
+elif [ "$PIPVersion" = "3.7" ]
 then
-    PYTHON="/usr/bin/python3.11"
-elif [ -e "/usr/bin/python3.9" ]
-then
-    PYTHON="/usr/bin/python3.9"
+    echo "Using pip Install in Python 3.7"
+    /usr/bin/python3 -m pip install wtee
 else
-    PYTHON="/usr/bin/python3"
+
+    if [ -e "/usr/bin/python3.11" ]
+    then
+        PYTHON="/usr/bin/python3.11"
+    elif [ -e "/usr/bin/python3.9" ]
+    then
+        PYTHON="/usr/bin/python3.9"
+    else
+        PYTHON="/usr/bin/python3"
+    fi
+
+    HttpUtilWithPEP668="$PYTHON -m pip install $OPTIONS httputil --break-system-packages"
+    HttpUtil="$PYTHON -m pip install $OPTIONS httputil "
+
+    if $HttpUtilWithPEP668
+    then
+        echo "HttpUtil installed using PEP668"
+    elif $HttpUtil
+    then
+        echo "HttpUntil installed without PEP668"
+    else
+        echo "ERROR in HttpUtil Python packages installation"
+    fi
+
+    BackportsWithPEP668="$PYTHON -m pip install $OPTIONS backports.ssl_match_hostname --break-system-packages"
+    Backports="$PYTHON -m pip install $OPTIONS backports.ssl_match_hostname --user pipenv"
+
+    if $BackportsWithPEP668
+    then
+        echo "Backports installed using PEP668"
+    elif $Backports
+    then
+        echo "Backports installed without PEP668"
+    else
+        echo "ERROR in Backports Python package installation"
+    fi
+
+    WteeWithPEP668="$PYTHON -m pip install $OPTIONS wtee --break-system-packages"
+    Wtee="$PYTHON -m pip install $OPTIONS  wtee --user pipenv"
+
+    if $WteeWithPEP668
+    then
+        echo "Wtee installed using PEP668"
+    elif $Wtee
+    then
+        echo "Wtee installed without PEP668"
+    else
+        echo "ERROR in Wtee Python package installation"
+    fi
 fi
-
-HttpUtilWithPEP668="$PYTHON -m pip install $OPTIONS httputil --break-system-packages"
-HttpUtil="$PYTHON -m pip install $OPTIONS httputil "
-
-if $HttpUtilWithPEP668
-then
-    echo "HttpUtil installed using PEP668"
-elif $HttpUtil
-then
-    echo "HttpUntil installed without PEP668"
-else
-    echo "ERROR in HttpUtil Python packages installation"
-fi
-
-BackportsWithPEP668="$PYTHON -m pip install $OPTIONS backports.ssl_match_hostname --break-system-packages"
-Backports="$PYTHON -m pip install $OPTIONS backports.ssl_match_hostname --user pipenv"
-
-if $BackportsWithPEP668
-then
-    echo "Backports installed using PEP668"
-elif $Backports
-then
-    echo "Backports installed without PEP668"
-else
-    echo "ERROR in Backports Python package installation"
-fi
-
-WteeWithPEP668="$PYTHON -m pip install $OPTIONS wtee --break-system-packages"
-Wtee="$PYTHON -m pip install $OPTIONS  wtee --user pipenv"
-
-if $WteeWithPEP668
-then
-    echo "Wtee installed using PEP668"
-elif $Wtee
-then
-    echo "Wtee installed without PEP668"
-else
-    echo "ERROR in Wtee Python package installation"
-fi
-
 
 ##############################################################3
 systemctl daemon-reload
